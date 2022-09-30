@@ -25,7 +25,7 @@ export async function bootstrapObject({configuration, object}) {
   const license = configuration.api.license;
   const identifier = configuration.api.identifier;
   let crate;
-  const skip = configuration.api?.skipByMatch;
+  const skip = configuration.api?.skipByMatch || [];
   let skipRegExp;
   if (skip.length > 0) {
     skipRegExp = new RegExp(skip.join("|"), "i");
