@@ -15,14 +15,17 @@ export function setupOauthRoutes({server, configuration}) {
 
   /**
    * @openapi
-   * /:
+   * /oauth/{provider}/login:
    *   get:
    *     description: O-Auth Provider Login
    *     parameters:
-   *       - provider
+   *       - in: path
+   *         name: provider
+   *         description: provider name/id
+   *         required: true
    *     responses:
-   *       200:
-   *         description: .
+   *       '200':
+   *         description: Returns a json with URL, code_verifier and provider
    */
   server.get("/oauth/:provider/login", async function (req, res, next) {
     const provider = req.params.provider;
@@ -75,15 +78,33 @@ export function setupOauthRoutes({server, configuration}) {
 
   /**
    * @openapi
-   * /:
-   *   get:
+   * /oauth/{provider}/code:
+   *   post:
    *     description: O-Auth Provider Code
+   *     consumes:
+   *         - application/json
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             required:
+   *               - code
+   *               - state
+   *             type: object
+   *             properties:
+   *               code:
+   *                 type: string
+   *               state:
+   *                 type: string
    *     parameters:
-   *       - provider
-   *       - code
-   *       - state
+   *       - in: path
+   *         name: provider
+   *         description: provider
+   *         required: true
+   *
    *     responses:
-   *       200:
+   *       '200':
    *         description: Return session token to authorize user with corresponding code.
    */
   server.post("/oauth/:provider/code", async function (req, res, next) {

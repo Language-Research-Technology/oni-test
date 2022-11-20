@@ -16,7 +16,7 @@ export function setupAdminRoutes({server, configuration, repository}) {
    *   get:
    *     description: Runs elastic indexer
    *     responses:
-   *       200:
+   *       '200':
    *         description: Returns a message that it has started indexing.
    */
   server.get("/admin/elastic/index", async (req, res, next) => {

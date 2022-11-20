@@ -18,7 +18,7 @@ export function setupRoutes({ server, configuration, repository }) {
   if (process.env.NODE_ENV === 'development') {
     /**
      * @openapi
-     * /:
+     * /test-middleware:
      *   get:
      *     description: Test Middleware
      *     responses:
@@ -47,7 +47,7 @@ export function setupRoutes({ server, configuration, repository }) {
 
   /**
    * @openapi
-   * /:
+   * /configuration:
    *   get:
    *     description: Configuration
    *     responses:
@@ -67,7 +67,7 @@ export function setupRoutes({ server, configuration, repository }) {
 
   /**
    * @openapi
-   * /:
+   * /version:
    *   get:
    *     description: Version
    *     responses:

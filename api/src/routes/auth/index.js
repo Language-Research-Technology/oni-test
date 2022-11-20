@@ -39,7 +39,19 @@ export function setupAuthRoutes({server, configuration}) {
   */
   setupLoginRoutes({server, configuration});
   setupOauthRoutes({server, configuration});
-
+  /**
+   * @openapi
+   * /auth/memberships:
+   *   get:
+   *    description: Retrieve user permissions from provider
+   *    security:
+   *      - Bearer: []
+   *    responses:
+   *      '200':
+   *        description: returns memberships array
+   *      '401':
+   *        description: Unauthorized
+   *   */
   server.get('/auth/memberships',
     routeUser(async function (req, res, next) {
       log.debug('checking memberships');
