@@ -4,6 +4,8 @@
         "siteNameX": "Commons of Australia",
         "publicPath": "http://localhost:9000/",
         "title": "Language Data Commons of Australia",
+        "shortTitle": "LDaCA",
+        "showLogo": true,
         "help": {
             "mainText": "For access please email help@ldaca.edu.au"
         },

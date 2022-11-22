@@ -83,7 +83,14 @@ export async function initOCFL({configuration}) {
   return new Promise(async (resolve, reject) => {
     try {
       const ocflConf = configuration.api.ocfl;
-      const storage = ocfl.storage({root: ocflConf.ocflPath, workspace: ocflConf.ocflScratch, ocflVersion: '1.0'});
+      const storage = ocfl.storage({
+        root: ocflConf.ocflPath,
+        workspace: ocflConf.ocflScratch,
+        ocflVersion: '1.0',
+        layout: {
+          extensionName: '000N-path-direct-storage-layout'
+        }
+      });
       storage.load();
       let objectsCount = 0;
       for await (let object of storage) {
