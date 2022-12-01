@@ -1,19 +1,17 @@
 // these endpoints will only return data they are responsible for
 //
-import models from '../models';
-import { UnauthorizedError, ForbiddenError } from 'restify-errors';
-import { routeUser, loadConfiguration } from '../services';
-import { setupObjectRoutes } from './object';
-import { setupUserRoutes } from './user';
-import { setupAuthRoutes } from './auth';
-import { setupSearchRoutes } from './search';
-import { setupAdminRoutes } from "./admin";
+import {routeUser, loadConfiguration} from '../services';
+import {setupObjectRoutes} from './object';
+import {setupUserRoutes} from './user';
+import {setupAuthRoutes} from './auth';
+import {setupSearchRoutes} from './search';
+import {setupAdminRoutes} from "./admin";
 
 const version = require('../../package.json')['version'];
 
-export function setupRoutes({ server, configuration, repository }) {
+export function setupRoutes({server, configuration, repository}) {
 
-  setupAuthRoutes({ server, configuration });
+  setupAuthRoutes({server, configuration});
 
   if (process.env.NODE_ENV === 'development') {
     /**
@@ -41,7 +39,8 @@ export function setupRoutes({ server, configuration, repository }) {
    *         description: None.
    */
   server.get('/', (req, res, next) => {
-    res.send({});
+    res.json({hello: 'from Oni'});
+    res.status(200);
     next();
   });
 
@@ -75,12 +74,12 @@ export function setupRoutes({ server, configuration, repository }) {
    *         description: Returns package version.
    */
   server.get('/version', (req, res, next) => {
-    res.send({ version: version });
+    res.send({version});
   });
 
-  setupObjectRoutes({ server, configuration, repository });
-  setupUserRoutes({ server, configuration });
-  setupSearchRoutes({ server, configuration });
+  setupObjectRoutes({server, configuration, repository});
+  setupUserRoutes({server, configuration});
+  setupSearchRoutes({server, configuration});
 
   const admin = configuration['api']['admin'];
   if (admin) {

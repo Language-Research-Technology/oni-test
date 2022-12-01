@@ -6,6 +6,11 @@
         "title": "Language Data Commons of Australia",
         "shortTitle": "LDaCA",
         "showLogo": true,
+<<<<<<< HEAD
+=======
+        "navHeight": "80px",
+        "showNotebooks": false,
+>>>>>>> master
         "help": {
             "mainText": "For access please email help@ldaca.edu.au"
         },
@@ -73,6 +78,11 @@
                 "hours": 5
             },
             "secret": "some_secret_-_32_characters_or_longer"
+        },
+        "tokens": {
+            "secret": "token_secret",
+            "accessTokenPassword": "64a826ad1c9c9afc6f8731d70471b94e",
+            "admin": "1234-1234-1234-1234"
         },
         "services": {},
         "authentication": {
@@ -164,6 +174,8 @@
         "elastic": {
             "bootstrap": false,
             "node": "http://elasticsearch:9200",
+            "maxScroll": 5000,
+            "scrollTimeout": "10m",
             "log": "debug",
             "index": "items",
             "fields": [

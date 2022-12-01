@@ -43,8 +43,13 @@ const options = {
 
 const swaggerSpec = swaggerJsdoc(options);
 
-var app = express();
-app.use(express.json());
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+const app = express();
+const port = 3000 || process.env.PORT;
+const host = 'localhost' || process.env.HOST;
+const base = '/docs' || process.env.BASE;
 
-app.listen({port: 3000});
+app.use(express.json());
+app.use(base, swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+console.log('Swagger docs:');
+console.log(`http://${host}:${port}${base}`);
+app.listen({port});
