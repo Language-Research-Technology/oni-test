@@ -87,6 +87,7 @@ export function setupRoutes({server, configuration, repository}) {
     ui.licenses = configuration?.api?.licenses;
     ui.conformsTo = configuration?.api?.conformsTo;
     ui.enrollment = configuration?.api?.authorization?.enrollment;
+    ui.vocabs = configuration?.api?.elastic?.vocabs;
     res.send({ui: configuration.ui});
     next();
   });

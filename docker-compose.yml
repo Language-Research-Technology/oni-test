@@ -59,7 +59,7 @@ services:
             - TERM="xterm-256color"
             - discovery.type=single-node
             - ES_JAVA_OPTS=-Xms2g -Xmx2g
-            - xpack.security.enabled=false
+            - xpack.security.enabled=false            
         ports:
             - "9200:9200"
             - "9300:9300"

@@ -57,13 +57,14 @@ export async function elasticIndex({configuration, repository}) {
 
 export async function search({configuration, index, searchBody, filterPath, explain = false}) {
   try {
+    const parsedJsonBody = JSON.parse(JSON.stringify(searchBody));
     log.debug("----- searchBody ----");
-    log.debug(JSON.stringify(searchBody));
+    console.log(parsedJsonBody.query?.bool?.must);
     log.debug("----- searchBody ----");
-    const elastic = configuration['api']['elastic'];
+    const elastic = configuration['api']['elastic'];    
     const opts = {
       index: index,
-      body: searchBody,
+      body: parsedJsonBody,
       explain: explain,
     }
     if (filterPath) {
