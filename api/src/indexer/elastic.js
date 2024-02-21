@@ -1,5 +1,5 @@
 import {getLogger} from '../services';
-import {Client} from '@elastic/elasticsearch';
+const { Client } = require('@opensearch-project/opensearch');
 import {Indexer} from './Indexer';
 
 const log = getLogger();
@@ -71,7 +71,7 @@ export async function search({configuration, index, searchBody, filterPath, expl
     }
     log.debug(JSON.stringify(opts));
     const result = await client.search(opts);
-    return result;
+    return result['body'];
   } catch (e) {
     log.error(e.message);
     throw new Error( e.message );
