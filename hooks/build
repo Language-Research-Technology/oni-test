@@ -12,7 +12,7 @@ echo "Image Name: ${IMAGE_NAME} (Repo: ${DOCKER_REPO}, Tag: ${DOCKER_TAG})"
 echo "Dockerfile Path/Name: ${DOCKERFILE_PATH}"
 BUILDPLATFORM="${BUILDPLATFORM:-"linux/amd64,linux/arm64"}"
 echo "Architectures=${BUILDPLATFORM}"
-
+env
 docker buildx create --name multiarch --use
 echo "docker buildx build --push --platform ${BUILDPLATFORM} --tag ${IMAGE_NAME} --file ${DOCKERFILE_PATH} ."
 docker buildx build \
@@ -21,5 +21,5 @@ docker buildx build \
     --platform "${BUILDPLATFORM}" \
     --tag "${IMAGE_NAME}" \
     --file "${DOCKERFILE_PATH}" .
-
+docker images
 echo "### RUN build END"
