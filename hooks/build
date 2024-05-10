@@ -14,7 +14,7 @@ BUILDPLATFORM="${BUILDPLATFORM:-"linux/amd64,linux/arm64"}"
 echo "Architectures=${BUILDPLATFORM}"
 
 docker buildx create --name multiarch --use
-echo "docker buildx build --push --platform ${BUILDPLATFORM} --tag ${IMAGE_NAME} --file ${DOCKERFILE_PATH} .
+echo "docker buildx build --push --platform ${BUILDPLATFORM} --tag ${IMAGE_NAME} --file ${DOCKERFILE_PATH} ."
 docker buildx build \
     --progress=plain \
     --print \
