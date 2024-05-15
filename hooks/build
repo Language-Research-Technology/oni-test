@@ -14,11 +14,10 @@ BUILDPLATFORM="${BUILDPLATFORM:-"linux/amd64,linux/arm64"}"
 echo "Architectures=${BUILDPLATFORM}"
 env
 docker buildx create --name multiarch --use
-echo "docker buildx build --platform ${BUILDPLATFORM} --tag ${IMAGE_NAME} --file ${DOCKERFILE_PATH} ."
 docker buildx build \
+    --push
     --progress=plain \
     --platform "${BUILDPLATFORM}" \
     --tag "${IMAGE_NAME}" \
     --file "${DOCKERFILE_PATH}" .
-docker images -a
 echo "### RUN build END"
