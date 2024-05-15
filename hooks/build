@@ -17,7 +17,6 @@ docker buildx create --name multiarch --use
 echo "docker buildx build --platform ${BUILDPLATFORM} --tag ${IMAGE_NAME} --file ${DOCKERFILE_PATH} ."
 docker buildx build \
     --progress=plain \
-    --push \
     --platform "${BUILDPLATFORM}" \
     --tag "${IMAGE_NAME}" \
     --file "${DOCKERFILE_PATH}" .
