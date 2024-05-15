@@ -21,5 +21,5 @@ docker buildx build \
     --platform "${BUILDPLATFORM}" \
     --tag "${IMAGE_NAME}" \
     --file "${DOCKERFILE_PATH}" .
-docker images
+docker images -a
 echo "### RUN build END"
